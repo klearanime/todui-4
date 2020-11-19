@@ -35,29 +35,36 @@ const displayTodos = function(num) {
     const num = i + 1;
     console.log(num + '. ' + todo.text);
   } 
+}
 
-    let toDone = '';
-    const isComplete = todos.isComplete
-
+const toggleComplete = function(num) {
+  let toDone = '';
+  const isComplete = todos.isComplete
     if (isComplete === true) {
-      toDone = num + '. ' + todos.text + COMPLETE_MARK
-        console.log(toDone = num + '. ' + todos.text + COMPLETE_MARK);
+      // toDone = num + '. ' + todos.text + COMPLETE_MARK
+        console.log(num + '. ' + todos.text + COMPLETE_MARK);
     } else {
-      toDone += num + '. ' + todos.text + INCOMPLETE_MARK
-        console.log(toDone += num + '. ' + todos.text + INCOMPLETE_MARK)
+      // toDone += num + '. ' + todos.text + INCOMPLETE_MARK
+        console.log(num + '. ' + todos.text + INCOMPLETE_MARK)
     }
-    console.log(toDone)
+    // console.log(toDone)
     interface.question(menu, handleMenu);
-
+    displayTodos();
+    displayMenu();
   }
 
-const priority = () => {
-  if (priority === '1') {
+
+const togglePriority = () => {
+  const todo = todos[num - 1]
+  todo.priority = todo.priority === 1 ? 2 : 1 
     
-  } else {
-
-  }
+  displayTodos();
+  displayMenu();
 } 
+
+const removeCompletedTodos = function() {
+  
+}
 
 // or, without intermediate variables:
 const displayTodosAlt1 = function() {
@@ -113,6 +120,7 @@ const handleMenu = function(cmd) {
     interface.close();
   }
 }
+
 
 displayTodos();
 displayMenu();
