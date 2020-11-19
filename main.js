@@ -27,15 +27,37 @@ const displayMenu = function() {
   interface.question(menu, handleMenu);
 }
 
-const displayTodos = function() {
+const displayTodos = function(num) {
   console.clear();
   console.log('\nHere are your current todos:\n')
   for (let i = 0; i < todos.length; i++) {
     const todo = todos[i];
     const num = i + 1;
     console.log(num + '. ' + todo.text);
+  } 
+
+    let toDone = '';
+    const isComplete = todos.isComplete
+
+    if (isComplete === true) {
+      toDone = num + '. ' + todos.text + COMPLETE_MARK
+        console.log(toDone = num + '. ' + todos.text + COMPLETE_MARK);
+    } else {
+      toDone += num + '. ' + todos.text + INCOMPLETE_MARK
+        console.log(toDone += num + '. ' + todos.text + INCOMPLETE_MARK)
+    }
+    console.log(toDone)
+    interface.question(menu, handleMenu);
+
   }
-}
+
+const priority = () => {
+  if (priority === '1') {
+    
+  } else {
+
+  }
+} 
 
 // or, without intermediate variables:
 const displayTodosAlt1 = function() {
@@ -82,7 +104,7 @@ const handleMenu = function(cmd) {
     removeCompletedTodos();
   } else if (cmd === '4') {
     displayTodos();
-    interface.question('\nPlease pick a todo to check complete or incomlete: ', toggleComplete)
+    interface.question('\nPlease pick a todo to check complete or incomplete: ', toggleComplete)
   } else if (cmd === '5') {
     displayTodos();
     interface.question('\nPlease pick a todo to toggle its priority: ', togglePriority)
